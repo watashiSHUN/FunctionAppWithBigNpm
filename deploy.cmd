@@ -58,13 +58,16 @@ echo Handling function App deployment.
 
 echo Copying repo files to temp folder
 xcopy "%DEPLOYMENT_SOURCE%" "%DEPLOYMENT_TEMP%" /seyiq
+IF !ERRORLEVEL! NEQ 0 goto error
 
 echo restoring npm packages
 pushd "%DEPLOYMENT_TEMP%"
 call npm install --production
+IF !ERRORLEVEL! NEQ 0 goto error
 
 echo running funcpack
 call funcpack pack .
+IF !ERRORLEVEL! NEQ 0 goto error
 
 popd
 
