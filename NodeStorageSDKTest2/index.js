@@ -3,7 +3,7 @@ var azure = require("azure-storage");
 module.exports = function(context, req) {
     var tableService = azure.createTableService(process.env.AzureWebJobsStorage);
 
-    tableService.createTableIfNotExists('mytable1', function(error, result, response) {
+    tableService.createTableIfNotExists('mytable2', function(error, result, response) {
         if (!error) {
             context.log('Table was created from NodeStorageSDKTest2');
 
