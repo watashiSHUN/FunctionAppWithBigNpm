@@ -1,7 +1,4 @@
 var azure = require("azure-storage");
-var minimatch = require("minimatch");
-
-context.log(minimatch("abc/def","def",{matchBase:true}));
 
 module.exports = function(context, req) {
     var tableService = azure.createTableService(process.env.AzureWebJobsStorage);
